@@ -15,8 +15,8 @@ public class ItemBlockTrimmed extends ItemBlock {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName() + "_" + BlockTrimmed.Type.byMetadata(stack.getMetadata()).getName();
+	public String getTranslationKey(ItemStack stack) {
+		return super.getTranslationKey() + "_" + BlockTrimmed.Type.byMetadata(stack.getMetadata()).getName();
 	}
 
 	@Override

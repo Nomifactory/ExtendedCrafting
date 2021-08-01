@@ -17,7 +17,7 @@ public class ECCreativeTab extends CreativeTabs {
 
 	@Nonnull
 	@Override
-	public ItemStack getTabIconItem() {
+	public ItemStack createIcon() {
 		return ModConfig.confCraftingCoreEnabled ? new ItemStack(ModBlocks.blockCraftingCore) : new ItemStack(ModItems.itemMaterial);
 	}
 }

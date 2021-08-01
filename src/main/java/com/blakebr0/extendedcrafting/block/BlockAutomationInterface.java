@@ -65,7 +65,7 @@ public class BlockAutomationInterface extends BlockBase implements ITileEntityPr
 	}
 	
 	@Override
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 	

@@ -15,8 +15,8 @@ public class ItemBlockLamp extends ItemBlock {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName() + "_" + BlockLamp.Type.byMetadata(stack.getMetadata()).getName();
+	public String getTranslationKey(ItemStack stack) {
+		return super.getTranslationKey() + "_" + BlockLamp.Type.byMetadata(stack.getMetadata()).getName();
 	}
 
 	@Override

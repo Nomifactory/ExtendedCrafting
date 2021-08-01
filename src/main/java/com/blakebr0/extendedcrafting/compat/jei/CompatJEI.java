@@ -68,8 +68,8 @@ public class CompatJEI implements IModPlugin {
 	
 	@Override
 	public void register(IModRegistry registry) {
-		blocks.forEach(block -> registry.addIngredientInfo(new ItemStack(block), VanillaTypes.ITEM, "desc." + block.getUnlocalizedName()));
-		items.forEach(item -> registry.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM, "desc." + item.getUnlocalizedName()));
+		blocks.forEach(block -> registry.addIngredientInfo(new ItemStack(block), VanillaTypes.ITEM, "desc." + block.getTranslationKey()));
+		items.forEach(item -> registry.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM, "desc." + item.getTranslationKey()));
 		
 		IJeiHelpers helpers = registry.getJeiHelpers();
 		IRecipeTransferRegistry transfer = registry.getRecipeTransferRegistry();
