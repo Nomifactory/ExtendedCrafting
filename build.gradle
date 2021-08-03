@@ -57,9 +57,9 @@ minecraft {
 }
 
 repositories {
-	maven {
-		url = "http://dvs1.progwml6.com/files/maven"
-	}
+    maven {
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
     maven {
         url = "https://maven.blamejared.com/"
     }
@@ -72,15 +72,15 @@ repositories {
 }
 
 dependencies {
-	deobfCompile "mezz.jei:jei_1.12.2:4.15.0.268:api"
-	runtime "mezz.jei:jei_1.12.2:4.15.0.268"
-    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.581"
+    deobfCompile "mezz.jei:jei_1.12.2:4.16.1.301:api"
+    runtime "mezz.jei:jei_1.12.2:4.16.1.301"
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.655"
     deobfCompile "curse.maven:cucumber:2645867"
     deobfCompile "curse.maven:hwyla:2568751"
-    deobfCompile "curse.maven:packagedauto:2977147"
-    deobfCompile "curse.maven:pexc:2899874"
-    deobfCompile "gregtechce:gregtech:1.12.2:1.10.1.557"
-    deobfCompile "codechicken-lib-1-8:CodeChickenLib-1.12.2:3.2.3.357:universal"
+    deobfCompile "curse.maven:packagedauto:3214216"
+    deobfCompile "curse.maven:pexc:3214400"
+    deobfCompile "gregtechce:gregtech:1.12.2:1.17.0.764"
+    deobfCompile "codechicken-lib-1-8:CodeChickenLib-1.12.2:3.2.3.358:universal"
 }
 
 processResources {
