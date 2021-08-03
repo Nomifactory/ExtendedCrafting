@@ -61,7 +61,7 @@ public class TileCompressor
 		boolean mark = false;
 
 		if (!this.getWorld().isRemote) {
-			CompressorRecipe recipe = this.getRecipe();
+			CompressorRecipe recipe = null;
 			ItemStack output = this.getStackInSlot(0);
 			ItemStack input = this.getStackInSlot(1);
 
@@ -69,6 +69,8 @@ public class TileCompressor
 				if (this.materialStack.isEmpty()) {
 					this.materialStack = input.copy();
 					mark = true;
+					//Retrieve new recipe upon non-null item detected
+					recipe = getRecipe();
 				}
 
 				if (!this.inputLimit || (recipe != null && this.materialCount < recipe.getInputCount())) {
@@ -82,6 +84,11 @@ public class TileCompressor
 						this.materialCount += consumeAmount;
 						mark = true;
 					}
+				}
+				//Invalidate the cached item and marked state on unsuccessful recipe retrieval
+				else if(mark) {
+					this.materialStack = ItemStack.EMPTY;
+					mark = false;
 				}
 			}
 
