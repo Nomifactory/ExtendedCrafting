@@ -77,7 +77,8 @@ public class ItemSingularityCustom extends ItemMeta implements IModelHelper, IEn
 				+ "\n- Example: 123456 would color it as whatever that color is."
                 + "\n - Use the localization key \"item.ec.singularity.<name>\" to set the name of your custom Singularity."
 			    + "\n - Example: item.ec.singularity.carrot=Carrot in your resources/extendedcrafting/lang/en_us.lang"
-			    + "\n - and item.ec.singularity.carrot=морковь in your resources/extendedcrafting/lang/ru_ru.lang");
+			    + "\n - and item.ec.singularity.carrot=морковь in your resources/extendedcrafting/lang/ru_ru.lang"
+			    + "\n - Note however that you will need a way to load these resources, such as the mod ResourceLoader.");
 
 		for (String value : values) {
 			String[] parts = value.split(";");
