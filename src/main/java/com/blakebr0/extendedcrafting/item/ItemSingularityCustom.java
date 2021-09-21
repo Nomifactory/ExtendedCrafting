@@ -4,7 +4,6 @@ import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.iface.IModelHelper;
 import com.blakebr0.cucumber.item.ItemMeta;
-import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
 import com.blakebr0.extendedcrafting.config.ModConfig;
 import com.blakebr0.extendedcrafting.crafting.CompressorRecipeManager;
@@ -14,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
@@ -39,8 +39,19 @@ public class ItemSingularityCustom extends ItemMeta implements IModelHelper, IEn
 
 	@Override
 	public String getItemStackDisplayName(ItemStack stack) {
-		String name = items.containsKey(stack.getMetadata()) ? items.get(stack.getMetadata()).getName().replace("_", " ") : "Dummy";
-		return WordUtils.capitalize(name) + " " + Utils.localize("item.ec.singularity.name");
+		String localizedMaterialName = "Invalid";
+		int meta = stack.getMetadata();
+		if (items.containsKey(meta)) {
+			String materialName = items.get(meta).getName();
+			String assumedTranslationKey = "item.ec.singularity." + materialName;
+
+			// Try to translate it using lang files
+			if(I18n.canTranslate(assumedTranslationKey))
+				localizedMaterialName = I18n.translateToLocal(assumedTranslationKey);
+			else // fallback to capitalized version of the registration name
+				localizedMaterialName = WordUtils.capitalize(materialName.replaceAll("_"," "));
+		}
+		return I18n.translateToLocalFormatted("item.ec.singularity.name", localizedMaterialName);
 	}
 
 	@Override
@@ -63,7 +74,11 @@ public class ItemSingularityCustom extends ItemMeta implements IModelHelper, IEn
 				+ "\n- Note: you can also specify meta for item ids, by adding them to the end of the item id."
 				+ "\n- Example: minecraft:stone:3 for a meta of 3. Make the meta 32767 for wildcard value."
 				+ "\n- 'color' the color of the singularity as a hex value. http://htmlcolorcodes.com/"
-				+ "\n- Example: 123456 would color it as whatever that color is.");
+				+ "\n- Example: 123456 would color it as whatever that color is."
+                + "\n - Use the localization key \"item.ec.singularity.<name>\" to set the name of your custom Singularity."
+			    + "\n - Example: item.ec.singularity.carrot=Carrot in your resources/extendedcrafting/lang/en_us.lang"
+			    + "\n - and item.ec.singularity.carrot=морковь in your resources/extendedcrafting/lang/ru_ru.lang"
+			    + "\n - Note however that you will need a way to load these resources, such as the mod ResourceLoader.");
 
 		for (String value : values) {
 			String[] parts = value.split(";");

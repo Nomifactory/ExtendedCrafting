@@ -3,7 +3,6 @@ package com.blakebr0.extendedcrafting.item;
 import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemMeta;
-import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
 import com.blakebr0.extendedcrafting.config.ModConfig;
 import com.blakebr0.extendedcrafting.crafting.CompressorRecipeManager;
@@ -13,12 +12,12 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -37,8 +36,12 @@ public class ItemSingularity extends ItemMeta implements IEnableable {
 
 	@Override
 	public String getItemStackDisplayName(ItemStack stack) {
-		String name = items.containsKey(stack.getMetadata()) ? items.get(stack.getMetadata()).getName().replace("_", " ") : "Dummy";
-		return WordUtils.capitalize(name) + " " + Utils.localize("item.ec.singularity.name");
+		String localizedMaterialName = "Invalid";
+		if (items.containsKey(stack.getMetadata())) {
+			String materialName = items.get(stack.getMetadata()).getName();
+			localizedMaterialName = I18n.translateToLocal("item.ec.singularity." + materialName);
+		}
+		return I18n.translateToLocalFormatted("item.ec.singularity.name", localizedMaterialName);
 	}
 
 	@Override
