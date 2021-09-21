@@ -86,9 +86,6 @@ item.ec.handheld_table.name=Ручной верстак
 
 item.ec.recipe_maker.name=Создатель рецептов
 
-item.ec.singularity.name=Сингулярность
-item.ec.singularity_ultimate.name=Максимальная сингулярность
-
 # CONTAINERS
 container.ec.crafting_core=Ядро создания
 container.ec.interface=Автоматический интерфейс
@@ -197,3 +194,46 @@ guide.entry.interface.page.4=<b>Smart Insert:<r> the interface will not allow <r
 
 guide.entry.singularity=Singularities
 guide.entry.singularity.page.1=<b>Singularities<r> are highly compressed materials. These are <i>usually<r> created using a <red>Quantum Compressor<r>. <n><n>Crafting all of the available singularities together in an <red>Ultimate Crafting Table<r> will reward you with <red>The Ultimate Singularity<r>.
+
+# Singularity Localizations
+item.ec.singularity.name=%s сингулярность
+item.ec.singularity_ultimate.name=Максимальная сингулярность
+
+item.ec.singularity.aluminum=Алюминиевая
+item.ec.singularity.brass=Латунная
+item.ec.singularity.bronze=Бронзовая
+item.ec.singularity.chrome=Хромовая
+item.ec.singularity.coal=Угольная
+item.ec.singularity.constantan=Константановая
+item.ec.singularity.copper=Медная
+item.ec.singularity.diamond=Алмазная
+item.ec.singularity.electrum=Электрумовая
+item.ec.singularity.emerald=Изумрудная
+item.ec.singularity.glowstone=Светокаменная
+item.ec.singularity.gold=Золотая
+item.ec.singularity.invar=Инваровая
+item.ec.singularity.iridium=Иридиевая
+item.ec.singularity.iron=Железная
+item.ec.singularity.lapis_lazuli=Лазуритовая
+item.ec.singularity.lead=Свинцовая
+item.ec.singularity.mithril=Мифриловая
+item.ec.singularity.nickel=Никелевая
+item.ec.singularity.platinum=Платиновая
+item.ec.singularity.redstone=Краснокаменная
+item.ec.singularity.silver=Серебряная
+item.ec.singularity.steel=Стальная
+item.ec.singularity.tin=Оловянная
+item.ec.singularity.titanium=Титановая
+item.ec.singularity.tungsten=Вольфрамовая
+item.ec.singularity.uranium=Урановая
+item.ec.singularity.zinc=Цинковая
+
+# Default Singularities - Thermal Expansion Alloys
+item.ec.singularity.enderium=Эндериевая
+item.ec.singularity.lumium=Люмиевая
+item.ec.singularity.signalum=Сигналовая
+
+# Default Singularities - Tinkers' Construct Materials
+item.ec.singularity.ardite=Ардитовая
+item.ec.singularity.cobalt=Кобальтовая
+item.ec.singularity.manyullyn=Манулиновая
