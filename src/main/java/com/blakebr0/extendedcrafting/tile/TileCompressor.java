@@ -69,9 +69,10 @@ public class TileCompressor
 				if (this.materialStack.isEmpty()) {
 					this.materialStack = input.copy();
 					mark = true;
-					//Retrieve new recipe upon non-null item detected
-					recipe = getRecipe();
 				}
+
+				// Retrieve the recipe after checking if the input is not empty, run every update cycle
+				recipe = this.getRecipe();
 
 				if (!this.inputLimit || (recipe != null && this.materialCount < recipe.getInputCount())) {
 					if (StackHelper.areStacksEqual(input, this.materialStack)) {
@@ -88,7 +89,6 @@ public class TileCompressor
 				//Invalidate the cached item and marked state on unsuccessful recipe retrieval
 				else if(mark) {
 					this.materialStack = ItemStack.EMPTY;
-					mark = false;
 				}
 			}
 
