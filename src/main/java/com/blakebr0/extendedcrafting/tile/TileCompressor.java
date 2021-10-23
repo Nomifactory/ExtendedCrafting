@@ -61,37 +61,42 @@ public class TileCompressor
 		boolean mark = false;
 
 		if (!this.getWorld().isRemote) {
-			CompressorRecipe recipe = null;
+
 			ItemStack output = this.getStackInSlot(0);
 			ItemStack input = this.getStackInSlot(1);
 
-			if (!input.isEmpty()) {
-				if (this.materialStack.isEmpty()) {
+			// Update the input item and materialStack before finding the recipe to prevent returning a null recipe
+			// on the first tick, as materialStack would be empty. This would become infinite failure of finding a recipe
+			// due to materialStack clearing on failed recipe
+			if(!input.isEmpty()) {
+				if(this.materialStack.isEmpty()) {
 					this.materialStack = input.copy();
 					mark = true;
 				}
-
-				// Retrieve the recipe after checking if the input is not empty, run every update cycle
-				recipe = this.getRecipe();
-
-				if (!this.inputLimit || (recipe != null && this.materialCount < recipe.getInputCount())) {
-					if (StackHelper.areStacksEqual(input, this.materialStack)) {
-						int consumeAmount = input.getCount();
-						if (this.inputLimit && recipe != null) {
-							consumeAmount = Math.min(consumeAmount, recipe.getInputCount() - this.materialCount);
-						}
-
-						StackHelper.decrease(input, consumeAmount, false);
-						this.materialCount += consumeAmount;
-						mark = true;
-					}
-				}
-				//Invalidate the cached item and marked state on unsuccessful recipe retrieval
-				else if(mark) {
-					this.materialStack = ItemStack.EMPTY;
-				}
 			}
 
+			CompressorRecipe recipe = getRecipe();
+
+
+			// Consuming Input Items
+			if (!input.isEmpty() && (!this.inputLimit || (recipe != null && this.materialCount < recipe.getInputCount()))) {
+				if (StackHelper.areStacksEqual(input, this.materialStack)) {
+					int consumeAmount = input.getCount();
+					if (this.inputLimit && recipe != null) {
+						consumeAmount = Math.min(consumeAmount, recipe.getInputCount() - this.materialCount);
+					}
+
+					StackHelper.decrease(input, consumeAmount, false);
+					this.materialCount += consumeAmount;
+					mark = true;
+				}
+			}
+			//Invalidate the cached item and marked state on unsuccessful recipe retrieval
+			else if(mark) {
+				this.materialStack = ItemStack.EMPTY;
+			}
+
+			// Progressing output item
 			if (recipe != null && this.getEnergy().getEnergyStored() > 0) {
 				if (this.materialCount >= recipe.getInputCount()) {
 					this.process(recipe);
@@ -137,6 +142,7 @@ public class TileCompressor
 			}
 		}
 
+		// Update Energy amount
 		if (this.oldEnergy != this.energy.getEnergyStored()) {
 			this.oldEnergy = this.energy.getEnergyStored();
 			mark = true;
