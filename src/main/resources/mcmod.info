@@ -1,12 +1,12 @@
 [
 {
   "modid": "extendedcrafting",
-  "name": "ExtendedCrafting: Omnifactory Edition",
-  "description": "Adds some new ways to craft items, as well as extra crafting items and utilities.\n\nContinued support for 1.12.2 provided by OmnifactoryDevs.",
+  "name": "ExtendedCrafting: Nomifactory Edition",
+  "description": "Adds some new ways to craft items, as well as extra crafting items and utilities.\n\nContinued support for 1.12.2 provided by Nomifactory.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "https://www.curseforge.com/minecraft/mc-mods/extended-crafting-omnifactory-edition",
-  "authorList": ["BlakeBr0", "ALongStringOfNumbers", "Eutropium", "Exa4096", "notmywing"],
+  "url": "https://www.curseforge.com/minecraft/mc-mods/extended-crafting-nomifactory-edition",
+  "authorList": ["BlakeBr0", "ALongStringOfNumbers", "Eutropium", "Exa4096", "notmywing", "dan"],
   "credits": "BlakeBr0 for ExtendedCrafting.\n\nSpitefulFox for Avaritia which some of this mod is based off of, and where the Singularity texture comes from; and ForbiddenMagic, where the Nether Star Block texture comes from.",
   "logoFile": "assets/extendedcrafting/textures/icon.png"
 }
