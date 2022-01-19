@@ -21,10 +21,10 @@ public @interface AddonReferenced {
 
 		@Override
 		public String call() { // Forge doesn't give the crash report for some reason.
-			return "You are using a fork of Extended Crafting created for the Omnifactory modpack.\n" +
+			return "You are using a fork of Extended Crafting created for the Nomifactory modpack.\n" +
 					"If the error above is a NoSuchFieldError or a NoSuchMethodError relating to\n" +
 					ExtendedCrafting.class.getPackage().getName() + ",\n" +
-					"then please report to https://github.com/OmnifactoryDevs/ExtendedCrafting/issues\n" +
+					"then please report to https://github.com/Nomifactory/ExtendedCrafting/issues\n" +
 					"with this crash report.\n" +
 					"Otherwise, you can ignore this message.";
 		}
