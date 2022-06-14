@@ -11,7 +11,7 @@ import groovyx.net.http.Method
 buildscript {
     repositories {
         maven {
-            url = "https://maven.cleanroommc.com/"
+            url = "https://maven.cleanroommc.com"
         }
         maven {
             url = "https://repo.spongepowered.org/maven"
@@ -32,8 +32,6 @@ plugins {
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
-
-//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 group = "nomifactory.extendedcrafting" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 version = getRewrittenVersion()
@@ -61,6 +59,12 @@ repositories {
     }
     maven {
         url = "https://maven.blamejared.com/"
+    }
+    maven {
+        url = "https://maven.cleanroommc.com"
+    }
+    maven {
+        url = "https://repo.spongepowered.org/maven"
     }
 }
 
