@@ -3,6 +3,7 @@ package com.blakebr0.extendedcrafting.compat.jei.endercrafter;
 import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.compat.jei.tablecrafting.TableShapedWrapper;
 import com.blakebr0.extendedcrafting.compat.jei.tablecrafting.TableShapelessWrapper;
 import mcp.MethodsReturnNonnullByDefault;
 import mezz.jei.api.IGuiHelper;
@@ -77,13 +78,25 @@ public class EnderCrafterCategory implements IRecipeCategory<IRecipeWrapper> {
 			}
 		}
 
-		int xd = 1;
-		for (List<ItemStack> stack : inputs) {
-			stacks.set(xd, stack);
-			xd++;
-		}
-		
-		if (wrapper instanceof TableShapelessWrapper) {
+		if (wrapper instanceof TableShapedWrapper) {
+			TableShapedWrapper shaped = (TableShapedWrapper) wrapper;
+
+			int stackIndex = 0;
+			for (int i = 0; i < shaped.getHeight(); i++) {
+				for (int j = 0; j < shaped.getWidth(); j++) {
+					int index = 1 + (i * 3) + j;
+
+					stacks.set(index, inputs.get(stackIndex));
+
+					stackIndex++;
+				}
+			}
+		} else if (wrapper instanceof TableShapelessWrapper) {
+			int i = 1;
+			for (List<ItemStack> stack : inputs) {
+				stacks.set(i, stack);
+				i++;
+			}
 			layout.setShapeless();
 		}
 
