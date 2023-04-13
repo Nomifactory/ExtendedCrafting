@@ -11,25 +11,15 @@ import groovyx.net.http.Method
 buildscript {
     repositories {
         mavenCentral()
-        maven {
-            url = "https://jitpack.io"
-        }
-        maven {
-            url = "https://maven.minecraftforge.net/"
-        }
-        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://jitpack.io" }
+        maven { url "https://maven.minecraftforge.net/" }
     }
     dependencies {
         classpath("com.github.GregTechCE:ForgeGradle:FG_2.3-SNAPSHOT") {
             changing = true
         }
         classpath "org.codehaus.groovy.modules.http-builder:http-builder:0.7"
-        classpath "org.apache.httpcomponents:httpmime:4.5.1"
     }
-}
-
-plugins {
-    id "com.wynprice.cursemaven" version "2.1.5"
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -57,31 +47,25 @@ minecraft {
 }
 
 repositories {
-    maven {
-        url = "http://dvs1.progwml6.com/files/maven"
-    }
-    maven {
-        url = "https://maven.blamejared.com/"
-    }
-    maven {
-        url = "http://chickenbones.net/maven/"
-    }
-    maven {
-        url = "https://minecraft.curseforge.com/api/maven"
-    }
+    maven { url "https://cursemaven.com" }
+    maven { url "http://dvs1.progwml6.com/files/maven" }
+    maven { url "https://maven.blamejared.com/" }
+    maven { url "http://chickenbones.net/maven/" }
+    maven { url "https://minecraft.curseforge.com/api/maven" }
 }
 
 dependencies {
     deobfCompile "mezz.jei:jei_1.12.2:4.16.1.301:api"
     runtime      "mezz.jei:jei_1.12.2:4.16.1.301"
-    runtime      "curse.maven:resource-loader:2477566"
+    runtime      "curse.maven:resource-loader-226447:2477566"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.660"
-    deobfCompile "curse.maven:cucumber:2645867"
-    deobfCompile "curse.maven:hwyla:2568751"
-    deobfCompile "curse.maven:packagedauto:3418955"
-    deobfCompile "curse.maven:pexc:3214400"
+    deobfCompile "curse.maven:cucumber-272335:2645867"
+    deobfCompile "curse.maven:hwyla-253449:2568751"
+    deobfCompile "curse.maven:packagedauto-308380:4478952"
+    deobfCompile "curse.maven:pexc-322861:4479502"
     deobfCompile "gregtechce:gregtech:1.12.2:1.17.0.764"
     deobfCompile "codechicken-lib-1-8:CodeChickenLib-1.12.2:3.2.3.358:universal"
+    testImplementation "junit:junit:4.13.1"
 }
 
 processResources {
