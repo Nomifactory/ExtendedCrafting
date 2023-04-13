@@ -41,12 +41,10 @@ public class EnderCrafting {
 
 		NonNullList<Ingredient> input = NonNullList.withSize(height * width, Ingredient.EMPTY);
 
-		int i = 0;
-		for (Iterator<Ingredient> it = Arrays.stream(ingredients)
-				.flatMap(Arrays::stream)
-				.map(CraftTweakerUtils::toIngredient)
-				.iterator(); it.hasNext(); ) {
-			input.set(i++, it.next());
+		for (int h = 0; h < height; h++) {
+			for (int w = 0; w < ingredients[h].length; w++) {
+				input.set(h * width + w, CraftTweakerUtils.toIngredient(ingredients[h][w]));
+			}
 		}
 
 		TableRecipeShaped recipe = new TableRecipeShaped(1, getItemStack(output), width, height, input);

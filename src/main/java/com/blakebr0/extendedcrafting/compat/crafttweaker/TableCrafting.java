@@ -65,18 +65,17 @@ public class TableCrafting {
 			NonNullList<Ingredient> input = NonNullList.withSize(height * width, Ingredient.EMPTY);
 			Map<Integer, Function<ItemStack, ItemStack>> transformers = new HashMap<>();
 
-			int i = 0;
-			for (Iterator<IIngredient> it = Arrays.stream(ingredients)
-					.flatMap(Arrays::stream)
-					.iterator(); it.hasNext(); ) {
-				IIngredient iing = it.next();
-				Ingredient ing = CraftTweakerUtils.toIngredient(iing);
-				input.set(i++, ing);
-				if (ing != Ingredient.EMPTY && iing.hasNewTransformers()) {
-					transformers.put(i, stack -> {
-						IItemStack istack = iing.applyNewTransform(CraftTweakerMC.getIItemStack(stack));
-						return CraftTweakerMC.getItemStack(istack);
-					});
+			for (int h = 0; h < height; h++) {
+				for (int w = 0; w < ingredients[h].length; w++) {
+					IIngredient iing = ingredients[h][w];
+					Ingredient ing = CraftTweakerUtils.toIngredient(iing);
+					input.set(h * width + w, ing);
+					if (ing != Ingredient.EMPTY && iing.hasNewTransformers()) {
+						transformers.put(h * width + w, stack -> {
+							IItemStack istack = iing.applyNewTransform(CraftTweakerMC.getIItemStack(stack));
+							return CraftTweakerMC.getItemStack(istack);
+						});
+					}
 				}
 			}
 
