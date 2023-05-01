@@ -54,24 +54,22 @@ public class TableCrafting {
 				tier = 0;
 			}
 
-			int height = ingredients.length;
-			int width = 0;
-			for (IIngredient[] row : ingredients) {
-				if (width < row.length) {
-					width = row.length;
-				}
-			}
+			int rows = ingredients.length;
+			int columns = 0;
+			for (IIngredient[] row : ingredients)
+				if (columns < row.length)
+					columns = row.length;
 
-			NonNullList<Ingredient> input = NonNullList.withSize(height * width, Ingredient.EMPTY);
+			NonNullList<Ingredient> input = NonNullList.withSize(rows * columns, Ingredient.EMPTY);
 			Map<Integer, Function<ItemStack, ItemStack>> transformers = new HashMap<>();
 
-			for (int h = 0; h < height; h++) {
-				for (int w = 0; w < ingredients[h].length; w++) {
-					IIngredient iing = ingredients[h][w];
+			for (int row = 0; row < rows; row++) {
+				for (int column = 0; column < ingredients[row].length; column++) {
+					IIngredient iing = ingredients[row][column];
 					Ingredient ing = CraftTweakerUtils.toIngredient(iing);
-					input.set(h * width + w, ing);
+					input.set(row * columns + column, ing);
 					if (ing != Ingredient.EMPTY && iing.hasNewTransformers()) {
-						transformers.put(h * width + w, stack -> {
+						transformers.put(row * columns + column, stack -> {
 							IItemStack istack = iing.applyNewTransform(CraftTweakerMC.getIItemStack(stack));
 							return CraftTweakerMC.getItemStack(istack);
 						});
@@ -79,7 +77,7 @@ public class TableCrafting {
 				}
 			}
 
-			recipe = new TableRecipeShaped(tier, CraftTweakerMC.getItemStack(output), width, height, input).withTransformers(transformers);
+			recipe = new TableRecipeShaped(tier, CraftTweakerMC.getItemStack(output), columns, rows, input).withTransformers(transformers);
 		}
 		return recipe;
 	}

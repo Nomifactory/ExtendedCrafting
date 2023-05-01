@@ -31,23 +31,19 @@ public class EnderCrafting {
 
 	@ZenMethod
 	public static void addShaped(IItemStack output, IIngredient[][] ingredients, int seconds) {
-		int height = ingredients.length;
-		int width = 0;
-		for (IIngredient[] row : ingredients) {
-			if (width < row.length) {
-				width = row.length;
-			}
-		}
+		int rows = ingredients.length;
+		int columns = 0;
+		for (IIngredient[] row : ingredients)
+			if (columns < row.length)
+				columns = row.length;
 
-		NonNullList<Ingredient> input = NonNullList.withSize(height * width, Ingredient.EMPTY);
+		NonNullList<Ingredient> input = NonNullList.withSize(rows * columns, Ingredient.EMPTY);
 
-		for (int h = 0; h < height; h++) {
-			for (int w = 0; w < ingredients[h].length; w++) {
-				input.set(h * width + w, CraftTweakerUtils.toIngredient(ingredients[h][w]));
-			}
-		}
+		for (int row = 0; row < rows; row++)
+			for (int column = 0; column < ingredients[row].length; column++)
+				input.set(row * columns + column, CraftTweakerUtils.toIngredient(ingredients[row][column]));
 
-		TableRecipeShaped recipe = new TableRecipeShaped(1, getItemStack(output), width, height, input);
+		TableRecipeShaped recipe = new TableRecipeShaped(1, getItemStack(output), columns, rows, input);
 		recipe.enderCrafterRecipeTimeRequired = seconds;
 		CraftTweakerAPI.apply(new Add(recipe));
 	}
