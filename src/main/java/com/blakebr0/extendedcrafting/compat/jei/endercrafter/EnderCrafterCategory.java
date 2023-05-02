@@ -3,7 +3,7 @@ package com.blakebr0.extendedcrafting.compat.jei.endercrafter;
 import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
-import com.blakebr0.extendedcrafting.compat.jei.tablecrafting.TableShapelessWrapper;
+import com.blakebr0.extendedcrafting.compat.jei.tablecrafting.TableShapedWrapper;
 import mcp.MethodsReturnNonnullByDefault;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.*;
@@ -62,28 +62,33 @@ public class EnderCrafterCategory implements IRecipeCategory<IRecipeWrapper> {
 
 	@Override
 	public void setRecipe(IRecipeLayout layout, IRecipeWrapper wrapper, IIngredients ingredients) {
-		IGuiItemStackGroup stacks = layout.getItemStacks();
+		// Dimension N of the NxN square crafting grid
+		final int GRID_N = 3;
+		// Length in pixels of square cells in the NxN crafting grid
+		final int CELL_PX = 18;
 
 		List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
 		List<ItemStack> outputs = ingredients.getOutputs(VanillaTypes.ITEM).get(0);
 
-		stacks.init(0, false, 94, 18);
-		stacks.set(0, outputs);
+		final IGuiItemStackGroup stackGroup = layout.getItemStacks();
+		stackGroup.init(0, false, 94, 18);
+		stackGroup.set(0, outputs);
 
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				int index = 1 + j + (i * 3);
-				stacks.init(index, true, j * 18, i * 18);
-			}
-		}
+		for (int y = 0; y < GRID_N; y++)
+			for (int x = 0; x < GRID_N; x++)
+				stackGroup.init(1 + x + y * GRID_N,
+				                true, x * CELL_PX, y * CELL_PX);
 
-		int xd = 1;
-		for (List<ItemStack> stack : inputs) {
-			stacks.set(xd, stack);
-			xd++;
+		if (wrapper instanceof TableShapedWrapper) {
+			TableShapedWrapper recipe = (TableShapedWrapper) wrapper;
+			int inputIndex = 0;
+			for (int row = 0; row < recipe.getHeight(); row++)
+				for (int column = 0; column < recipe.getWidth(); column++)
+					stackGroup.set(1 + column + row * GRID_N, inputs.get(inputIndex++));
 		}
-		
-		if (wrapper instanceof TableShapelessWrapper) {
+		else {
+			for (int index = 0; index < inputs.size(); index++)
+				stackGroup.set(index + 1, inputs.get(index));
 			layout.setShapeless();
 		}
 

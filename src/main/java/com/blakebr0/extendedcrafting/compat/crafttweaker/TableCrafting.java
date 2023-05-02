@@ -54,33 +54,30 @@ public class TableCrafting {
 				tier = 0;
 			}
 
-			int height = ingredients.length;
-			int width = 0;
-			for (IIngredient[] row : ingredients) {
-				if (width < row.length) {
-					width = row.length;
-				}
-			}
+			int rows = ingredients.length;
+			int columns = 0;
+			for (IIngredient[] row : ingredients)
+				if (columns < row.length)
+					columns = row.length;
 
-			NonNullList<Ingredient> input = NonNullList.withSize(height * width, Ingredient.EMPTY);
+			NonNullList<Ingredient> input = NonNullList.withSize(rows * columns, Ingredient.EMPTY);
 			Map<Integer, Function<ItemStack, ItemStack>> transformers = new HashMap<>();
 
-			int i = 0;
-			for (Iterator<IIngredient> it = Arrays.stream(ingredients)
-					.flatMap(Arrays::stream)
-					.iterator(); it.hasNext(); ) {
-				IIngredient iing = it.next();
-				Ingredient ing = CraftTweakerUtils.toIngredient(iing);
-				input.set(i++, ing);
-				if (ing != Ingredient.EMPTY && iing.hasNewTransformers()) {
-					transformers.put(i, stack -> {
-						IItemStack istack = iing.applyNewTransform(CraftTweakerMC.getIItemStack(stack));
-						return CraftTweakerMC.getItemStack(istack);
-					});
+			for (int row = 0; row < rows; row++) {
+				for (int column = 0; column < ingredients[row].length; column++) {
+					IIngredient iing = ingredients[row][column];
+					Ingredient ing = CraftTweakerUtils.toIngredient(iing);
+					input.set(row * columns + column, ing);
+					if (ing != Ingredient.EMPTY && iing.hasNewTransformers()) {
+						transformers.put(row * columns + column, stack -> {
+							IItemStack istack = iing.applyNewTransform(CraftTweakerMC.getIItemStack(stack));
+							return CraftTweakerMC.getItemStack(istack);
+						});
+					}
 				}
 			}
 
-			recipe = new TableRecipeShaped(tier, CraftTweakerMC.getItemStack(output), width, height, input).withTransformers(transformers);
+			recipe = new TableRecipeShaped(tier, CraftTweakerMC.getItemStack(output), columns, rows, input).withTransformers(transformers);
 		}
 		return recipe;
 	}
