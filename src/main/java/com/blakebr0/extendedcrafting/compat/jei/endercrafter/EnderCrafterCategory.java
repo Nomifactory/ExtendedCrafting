@@ -2,7 +2,7 @@ package com.blakebr0.extendedcrafting.compat.jei.endercrafter;
 
 import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.util.Utils;
-import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import com.blakebr0.extendedcrafting.compat.jei.tablecrafting.TableShapedWrapper;
 import mcp.MethodsReturnNonnullByDefault;
 import mezz.jei.api.IGuiHelper;
@@ -23,7 +23,7 @@ import java.util.List;
 public class EnderCrafterCategory implements IRecipeCategory<IRecipeWrapper> {
 
 	public static final String UID = "extendedcrafting:ender_crafting";
-	private static final ResourceLocation TEXTURE = ResourceHelper.getResource(ExtendedCrafting.MOD_ID, "textures/jei/ender_crafting.png");
+	private static final ResourceLocation TEXTURE = ResourceHelper.getResource(Tags.MODID, "textures/jei/ender_crafting.png");
 
 	private final IDrawable background;
 	private final IDrawableAnimated arrow;
@@ -47,7 +47,7 @@ public class EnderCrafterCategory implements IRecipeCategory<IRecipeWrapper> {
 
 	@Override
 	public String getModName() {
-		return ExtendedCrafting.NAME;
+		return Tags.MODNAME;
 	}
 
 	@Override

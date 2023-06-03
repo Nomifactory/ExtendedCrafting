@@ -1,7 +1,7 @@
 package com.blakebr0.extendedcrafting.compat.jei;
 
 import com.blakebr0.cucumber.helper.ResourceHelper;
-import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import com.blakebr0.extendedcrafting.block.ModBlocks;
 import com.blakebr0.extendedcrafting.client.container.*;
 import com.blakebr0.extendedcrafting.client.gui.*;
@@ -37,7 +37,7 @@ import java.util.List;
 @JEIPlugin
 public class CompatJEI implements IModPlugin {
 
-	public static final ResourceLocation ICONS = ResourceHelper.getResource(ExtendedCrafting.MOD_ID, "textures/jei/icons.png");
+	public static final ResourceLocation ICONS = ResourceHelper.getResource(Tags.MODID, "textures/jei/icons.png");
 	
 	public static final List<Block> blocks = new ArrayList<>();
 	public static final List<Item> items = new ArrayList<>();

@@ -3,6 +3,7 @@ package com.blakebr0.extendedcrafting.client.gui;
 import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import com.blakebr0.extendedcrafting.client.container.ContainerCraftingCore;
 import com.blakebr0.extendedcrafting.crafting.CombinationRecipe;
 import com.blakebr0.extendedcrafting.tile.TileCraftingCore;
@@ -16,7 +17,7 @@ import net.minecraft.util.ResourceLocation;
 @SuppressWarnings("SameParameterValue")
 public class GuiCraftingCore extends GuiContainer {
 
-	private static final ResourceLocation GUI = ResourceHelper.getResource(ExtendedCrafting.MOD_ID, "textures/gui/crafting_core.png");
+	private static final ResourceLocation GUI = ResourceHelper.getResource(Tags.MODID, "textures/gui/crafting_core.png");
 
 	private final TileCraftingCore tile;
 

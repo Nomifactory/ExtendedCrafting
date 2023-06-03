@@ -2,13 +2,13 @@ package com.blakebr0.extendedcrafting.client.gui;
 
 import com.blakebr0.cucumber.helper.RenderHelper;
 import com.blakebr0.cucumber.helper.ResourceHelper;
-import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import com.blakebr0.extendedcrafting.client.container.ContainerUltimateTable;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiUltimateTable extends AbstractTableGui {
 
-	public static final ResourceLocation GUI = ResourceHelper.getResource(ExtendedCrafting.MOD_ID, "textures/gui/ultimate_table.png");
+	public static final ResourceLocation GUI = ResourceHelper.getResource(Tags.MODID, "textures/gui/ultimate_table.png");
 
 	public GuiUltimateTable(ContainerUltimateTable container) {
 		super(container, "ultimate", ContainerUltimateTable.GRID_START_X, GUI);

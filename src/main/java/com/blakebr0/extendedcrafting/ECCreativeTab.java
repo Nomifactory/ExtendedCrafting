@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 public class ECCreativeTab extends CreativeTabs {
 
 	public ECCreativeTab() {
-		super(ExtendedCrafting.MOD_ID);
+		super(Tags.MODID);
 	}
 
 	@Nonnull

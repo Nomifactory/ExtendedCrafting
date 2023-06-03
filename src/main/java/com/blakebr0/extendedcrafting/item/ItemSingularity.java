@@ -4,6 +4,7 @@ import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.iface.IEnableable;
 import com.blakebr0.cucumber.item.ItemMeta;
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import com.blakebr0.extendedcrafting.config.ModConfig;
 import com.blakebr0.extendedcrafting.crafting.CompressorRecipeManager;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -99,7 +100,7 @@ public class ItemSingularity extends ItemMeta implements IEnableable {
 	@Override
 	public void initModels() {
 		for (Map.Entry<Integer, MetaItem> item : items.entrySet()) {
-			ModelLoader.setCustomModelResourceLocation(this, item.getKey(), ResourceHelper.getModelResource(ExtendedCrafting.MOD_ID, "singularity", "inventory"));
+			ModelLoader.setCustomModelResourceLocation(this, item.getKey(), ResourceHelper.getModelResource(Tags.MODID, "singularity", "inventory"));
 		}
 	}
 

@@ -15,17 +15,13 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = ExtendedCrafting.MOD_ID, name = ExtendedCrafting.NAME, version = ExtendedCrafting.VERSION, dependencies = ExtendedCrafting.DEPENDENCIES, guiFactory = ExtendedCrafting.GUI_FACTORY)
+@Mod(modid = Tags.MODID, version = Tags.VERSION, name = Tags.MODNAME, acceptedMinecraftVersions = "[1.12.2]", dependencies = ExtendedCrafting.DEPENDENCIES, guiFactory = ExtendedCrafting.GUI_FACTORY)
 public class ExtendedCrafting {
-
-	public static final String MOD_ID = "extendedcrafting";
-	public static final String NAME = "GRADLE:MODNAME";
-	public static final String VERSION = "GRADLE:VERSION";
 	public static final String GUI_FACTORY = "com.blakebr0.extendedcrafting.config.GuiFactory";
 	public static final String DEPENDENCIES = "required-after:cucumber@[1.1.2,)";
 
-	public static final ModRegistry REGISTRY = ModRegistry.create(MOD_ID);
-	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
+	public static final ModRegistry REGISTRY = ModRegistry.create(Tags.MODID);
+	public static final Logger LOGGER = LogManager.getLogger(Tags.MODID);
 	public static final CreativeTabs CREATIVE_TAB = new ECCreativeTab();
 
 	public static final boolean DEBUG = false;
@@ -34,7 +30,7 @@ public class ExtendedCrafting {
 	public static CommonProxy proxy;
 
 	@SuppressWarnings("CanBeFinal")
-	@Instance(ExtendedCrafting.MOD_ID)
+	@Instance(Tags.MODID)
 	public static ExtendedCrafting instance = new ExtendedCrafting();
 
 	@EventHandler
