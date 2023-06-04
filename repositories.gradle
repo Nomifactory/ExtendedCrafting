@@ -1,8 +1,0 @@
-// Add any additional repositories for your dependencies here
-
-repositories {
-    maven { url "http://dvs1.progwml6.com/files/maven" }
-    maven { url "https://maven.blamejared.com/" }
-    maven { url "http://chickenbones.net/maven/" }
-    maven { url "https://minecraft.curseforge.com/api/maven" }
-}
