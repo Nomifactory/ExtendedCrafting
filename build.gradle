@@ -1,4 +1,4 @@
-//version: 1685741895
+//version: 1685848652
 /*
  * DO NOT CHANGE THIS FILE!
  * Also, you may replace this file at any time if there is an update available.
@@ -979,7 +979,7 @@ def getSecondaryArtifacts() {
 }
 
 def getReleaseType() {
-    String type = releaseType
+    String type = project.releaseType
     if (!(type in ['release', 'beta', 'alpha'])) {
         throw new Exception("Release type invalid! Found \"" + type + "\", allowed: \"release\", \"beta\", \"alpha\"")
     }
