@@ -1,8 +1,6 @@
-if (!modVersion) {
-    if (providers.environmentVariable('GITHUB_TAG').isPresent() && releaseType == "beta") {
-        def lastTag = getLastTag()
-        def commitNo = runShell "git rev-list ${lastTag}..HEAD --count"
+if (!modVersion && !providers.environmentVariable('GITHUB_TAG').isPresent() && releaseType == "beta") {
+    def lastTag = getLastTag()
+    def commitNo = runShell "git rev-list ${lastTag}..HEAD --count"
 
-        modVersion = lastTag + "." + commitNo
-    }
+    modVersion = lastTag + "." + commitNo
 }

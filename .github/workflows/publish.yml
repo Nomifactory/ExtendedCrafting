@@ -58,7 +58,6 @@ jobs:
           CURSEFORGE_API_KEY: "${{secrets.CURSEFORGE_API_KEY}}"
           CURSEFORGE_PROJECT_ID: "${{secrets.CURSEFORGE_PROJECT_ID}}"
           CHANGELOG_LOCATION: "${{env.CHANGELOG_LOCATION}}"
-          RELEASE_TYPE: "${{env.RELEASE_TYPE}}"
         with:
           arguments: 'curseforge --daemon'
           generate-job-summary: false

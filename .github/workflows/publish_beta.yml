@@ -1,5 +1,5 @@
 # Publishes built jars to distribution platforms
-name: Publish
+name: Publish (Beta)
 
 on:
   push:
@@ -22,6 +22,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+
+      - name: Fetch Tags
+        run: git fetch --prune --unshallow --tags --force
 
       - name: Check for Duplicate Tags
         run: |
@@ -47,20 +50,12 @@ jobs:
             notifications
             wrapper
 
-      - name: Publish to GitHub
-        uses: softprops/action-gh-release@v1
-        with:
-          files: "build/libs/*.jar"
-          generate_release_notes: true
-          fail_on_unmatched_files: true
-
       - name: Publish to Curseforge
         uses: gradle/gradle-build-action@v2
         env:
           CURSEFORGE_API_KEY: "${{secrets.CURSEFORGE_API_KEY}}"
           CURSEFORGE_PROJECT_ID: "${{secrets.CURSEFORGE_PROJECT_ID}}"
           CHANGELOG_LOCATION: "${{env.CHANGELOG_LOCATION}}"
-          RELEASE_TYPE: "${{env.RELEASE_TYPE}}"
         with:
           arguments: 'curseforge --daemon'
           generate-job-summary: false
