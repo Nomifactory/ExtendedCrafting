@@ -3,12 +3,14 @@ name: Publish
 
 on:
   push:
-    tags:
-      - '[0-9]+.[0-9]+.[0-9]+' # any semver tag, e.g. 1.2.3
+    branches:
+      - master
 
 env:
   # link to the changelog with a format code for the version
   CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{github.repository}}/releases/tag/${{github.ref_name}})"
+  # type of release
+  RELEASE_TYPE: "beta"
 
 jobs:
   Publish:

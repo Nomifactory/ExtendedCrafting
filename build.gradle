@@ -1,4 +1,4 @@
-//version: 1685933053
+//version: 1686115524
 /*
  * DO NOT CHANGE THIS FILE!
  * Also, you may replace this file at any time if there is an update available.
@@ -71,7 +71,7 @@ propertyDefaultIfUnsetWithEnvVar("modrinthProjectId", "", "MODRINTH_PROJECT_ID")
 propertyDefaultIfUnset("modrinthRelations", "")
 propertyDefaultIfUnsetWithEnvVar("curseForgeProjectId", "", "CURSEFORGE_PROJECT_ID")
 propertyDefaultIfUnset("curseForgeRelations", "")
-propertyDefaultIfUnset("releaseType", "release")
+propertyDefaultIfUnsetWithEnvVar("releaseType", "release", "RELEASE_TYPE")
 propertyDefaultIfUnset("generateDefaultChangelog", false)
 propertyDefaultIfUnset("customMavenPublishUrl", "")
 propertyDefaultIfUnset("enableModernJavaSyntax", false)
@@ -242,6 +242,12 @@ tasks.withType(ScalaCompile).configureEach {
 }
 
 
+// Allow others using this buildscript to have custom gradle code run
+if (getFile('addon.gradle').exists()) {
+    apply from: 'addon.gradle'
+}
+
+
 // Configure Minecraft
 
 // Try to gather mod version from git tags if version is not manually specified
@@ -297,12 +303,6 @@ if (generateGradleTokenClass) {
 
 tasks.named('processIdeaSettings').configure {
     dependsOn('injectTags')
-}
-
-
-// Allow others using this buildscript to have custom gradle code run
-if (getFile('addon.gradle').exists()) {
-    apply from: 'addon.gradle'
 }
 
 
