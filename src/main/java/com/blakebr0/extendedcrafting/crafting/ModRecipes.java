@@ -51,6 +51,7 @@ public class ModRecipes {
 
 		ModItems.itemSingularity.initRecipes();
 		ModItems.itemSingularityUltimate.initRecipe();
+		ModItems.itemSingularityCustom.initRecipes();
 
 		// test recipes
 		/*
@@ -122,7 +123,4 @@ public class ModRecipes {
 		 */
 	}
 
-	public static void post() {
-		ModItems.itemSingularityCustom.initRecipes();
-	}
 }

@@ -60,7 +60,6 @@ public class CommonProxy {
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {
-		ModRecipes.post();
 		ModGuide.setup();
 	}
 
