@@ -1,6 +1,7 @@
 package com.blakebr0.extendedcrafting.proxy;
 
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import com.blakebr0.extendedcrafting.block.ModBlocks;
 import com.blakebr0.extendedcrafting.client.gui.GuiHandler;
 import com.blakebr0.extendedcrafting.compat.crafttweaker.CombinationCrafting;
@@ -10,8 +11,8 @@ import com.blakebr0.extendedcrafting.compat.crafttweaker.TableCrafting;
 import com.blakebr0.extendedcrafting.config.ModConfig;
 import com.blakebr0.extendedcrafting.crafting.ModRecipes;
 import com.blakebr0.extendedcrafting.item.ModItems;
-import com.blakebr0.extendedcrafting.lib.ModGuide;
 import com.blakebr0.extendedcrafting.lib.AddonReferenced;
+import com.blakebr0.extendedcrafting.lib.ModGuide;
 import com.blakebr0.extendedcrafting.network.NetworkThingy;
 import com.blakebr0.extendedcrafting.tile.ModTiles;
 import crafttweaker.CraftTweakerAPI;
@@ -32,7 +33,7 @@ import java.io.File;
 public class CommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
-		ModConfig.init(new File(event.getModConfigurationDirectory(), ExtendedCrafting.MOD_ID + ".cfg"));
+		ModConfig.init(new File(event.getModConfigurationDirectory(), Tags.MODID + ".cfg"));
 		MinecraftForge.EVENT_BUS.register(new ModConfig());
 
 		ModBlocks.init();

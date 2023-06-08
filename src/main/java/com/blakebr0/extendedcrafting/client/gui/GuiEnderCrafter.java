@@ -3,6 +3,7 @@ package com.blakebr0.extendedcrafting.client.gui;
 import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import com.blakebr0.extendedcrafting.client.container.ContainerEnderCrafter;
 import com.blakebr0.extendedcrafting.tile.TileEnderCrafter;
 
@@ -13,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 @SuppressWarnings("SameParameterValue")
 public class GuiEnderCrafter extends GuiContainer {
 
-	private static final ResourceLocation GUI = ResourceHelper.getResource(ExtendedCrafting.MOD_ID, "textures/gui/ender_crafter.png");
+	private static final ResourceLocation GUI = ResourceHelper.getResource(Tags.MODID, "textures/gui/ender_crafter.png");
 	private final TileEnderCrafter tile;
 
 	public GuiEnderCrafter(TileEnderCrafter tile, ContainerEnderCrafter container) {

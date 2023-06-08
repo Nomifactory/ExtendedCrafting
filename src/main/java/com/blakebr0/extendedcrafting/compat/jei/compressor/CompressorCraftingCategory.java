@@ -3,6 +3,7 @@ package com.blakebr0.extendedcrafting.compat.jei.compressor;
 import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import mcp.MethodsReturnNonnullByDefault;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
@@ -22,7 +23,7 @@ import java.util.List;
 public class CompressorCraftingCategory implements IRecipeCategory<CompressorCraftingWrapper> {
 
 	public static final String UID = "extendedcrafting:compressor";
-	private static final ResourceLocation TEXTURE = ResourceHelper.getResource(ExtendedCrafting.MOD_ID, "textures/jei/compressor.png");
+	private static final ResourceLocation TEXTURE = ResourceHelper.getResource(Tags.MODID, "textures/jei/compressor.png");
 
 	private final IDrawable background;
 
@@ -42,7 +43,7 @@ public class CompressorCraftingCategory implements IRecipeCategory<CompressorCra
 	
 	@Override
 	public String getModName() {
-		return ExtendedCrafting.NAME;
+		return Tags.MODNAME;
 	}
 
 	@Override

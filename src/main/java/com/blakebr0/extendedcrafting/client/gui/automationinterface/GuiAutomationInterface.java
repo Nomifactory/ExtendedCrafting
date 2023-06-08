@@ -5,6 +5,7 @@ import com.blakebr0.cucumber.gui.button.IconButton;
 import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import com.blakebr0.extendedcrafting.client.container.automationinterface.ContainerAutomationInterface;
 import com.blakebr0.extendedcrafting.lib.ViewRecipeInfo;
 import com.blakebr0.extendedcrafting.network.InterfaceRecipeChangePacket;
@@ -22,7 +23,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @SuppressWarnings("SameParameterValue")
 public class GuiAutomationInterface extends GuiContainer {
 
-	protected static final ResourceLocation GUI = ResourceHelper.getResource(ExtendedCrafting.MOD_ID, "textures/gui/automation_interface.png");
+	protected static final ResourceLocation GUI = ResourceHelper.getResource(Tags.MODID, "textures/gui/automation_interface.png");
 	protected final TileAutomationInterface tile;
 	protected final InventoryPlayer player;
 	private GuiButton save, clear, view, config;

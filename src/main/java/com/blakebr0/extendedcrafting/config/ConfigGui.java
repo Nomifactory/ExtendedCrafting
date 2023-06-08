@@ -1,19 +1,18 @@
 package com.blakebr0.extendedcrafting.config;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.blakebr0.extendedcrafting.ExtendedCrafting;
-
+import com.blakebr0.extendedcrafting.Tags;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.client.config.IConfigElement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ConfigGui extends GuiConfig {
 
 	public ConfigGui(GuiScreen parent) {
-		super(parent, getConfigElements(), ExtendedCrafting.MOD_ID, false, false,
+		super(parent, getConfigElements(), Tags.MODID, false, false,
 				GuiConfig.getAbridgedConfigPath(ModConfig.config.toString()));
 	}
 

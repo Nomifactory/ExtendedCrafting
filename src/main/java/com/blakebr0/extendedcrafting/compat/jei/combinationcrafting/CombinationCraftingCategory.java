@@ -2,7 +2,7 @@ package com.blakebr0.extendedcrafting.compat.jei.combinationcrafting;
 
 import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.util.Utils;
-import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import mcp.MethodsReturnNonnullByDefault;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
@@ -23,7 +23,7 @@ import java.util.List;
 public class CombinationCraftingCategory implements IRecipeCategory<CombinationCraftingWrapper> {
 
 	public static final String UID = "extendedcrafting:combination_crafting";
-	private static final ResourceLocation TEXTURE = ResourceHelper.getResource(ExtendedCrafting.MOD_ID, "textures/jei/combination_crafting.png");
+	private static final ResourceLocation TEXTURE = ResourceHelper.getResource(Tags.MODID, "textures/jei/combination_crafting.png");
 
 	private final IDrawable background;
 
@@ -43,7 +43,7 @@ public class CombinationCraftingCategory implements IRecipeCategory<CombinationC
 	
 	@Override
 	public String getModName() {
-		return ExtendedCrafting.NAME;
+		return Tags.MODNAME;
 	}
 
 	@Override

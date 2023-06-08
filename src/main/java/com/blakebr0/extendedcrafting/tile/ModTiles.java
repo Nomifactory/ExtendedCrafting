@@ -1,6 +1,7 @@
 package com.blakebr0.extendedcrafting.tile;
 
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import com.blakebr0.extendedcrafting.config.ModConfig;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -31,7 +32,7 @@ public class ModTiles {
 		}
 		
 		if (ModConfig.confEnderEnabled) {
-			GameRegistry.registerTileEntity(TileEnderCrafter.class, ExtendedCrafting.MOD_ID + "ender_crafter");
+			GameRegistry.registerTileEntity(TileEnderCrafter.class, Tags.MODID + "ender_crafter");
 		}
 	}
 }

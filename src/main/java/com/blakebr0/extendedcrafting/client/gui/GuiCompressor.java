@@ -3,6 +3,7 @@ package com.blakebr0.extendedcrafting.client.gui;
 import com.blakebr0.cucumber.helper.ResourceHelper;
 import com.blakebr0.cucumber.util.Utils;
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import com.blakebr0.extendedcrafting.client.container.ContainerCompressor;
 import com.blakebr0.extendedcrafting.crafting.CompressorRecipe;
 import com.blakebr0.extendedcrafting.network.EjectModeSwitchPacket;
@@ -24,7 +25,7 @@ import java.util.List;
 @SuppressWarnings("SameParameterValue")
 public class GuiCompressor extends GuiContainer {
 
-	private static final ResourceLocation GUI = ResourceHelper.getResource(ExtendedCrafting.MOD_ID, "textures/gui/compressor.png");
+	private static final ResourceLocation GUI = ResourceHelper.getResource(Tags.MODID, "textures/gui/compressor.png");
 
 	private final TileCompressor tile;
 

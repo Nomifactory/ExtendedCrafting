@@ -1,6 +1,6 @@
 package com.blakebr0.extendedcrafting.config;
 
-import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import com.blakebr0.extendedcrafting.item.ModItems;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
@@ -57,7 +57,7 @@ public class ModConfig {
 
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-		if (event.getModID().equals(ExtendedCrafting.MOD_ID)) {
+		if (event.getModID().equals(Tags.MODID)) {
 			ModConfig.init();
 		}
 	}

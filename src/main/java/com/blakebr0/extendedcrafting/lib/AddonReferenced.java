@@ -1,6 +1,7 @@
 package com.blakebr0.extendedcrafting.lib;
 
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
+import com.blakebr0.extendedcrafting.Tags;
 import net.minecraftforge.fml.common.ICrashCallable;
 
 import java.lang.annotation.Retention;
@@ -16,7 +17,7 @@ public @interface AddonReferenced {
 
 		@Override
 		public String getLabel() {
-			return ExtendedCrafting.NAME;
+			return Tags.MODNAME;
 		}
 
 		@Override
