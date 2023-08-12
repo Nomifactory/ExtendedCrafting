@@ -20,7 +20,6 @@ import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.ArrayList;
@@ -161,11 +160,7 @@ public class ItemSingularityCustom extends ItemMeta implements IModelHelper, IEn
 				} else if (parts.length == 2) {
 					if (((String) value).startsWith("ore:")) {
 						String ore = ((String) value).substring(4);
-						if (OreDictionary.doesOreNameExist(ore)) {
-							if (!OreDictionary.getOres(ore).isEmpty()) {
-								CompressorRecipeManager.getInstance().addRecipe(new ItemStack(this, 1, meta), CraftingHelper.getIngredient(ore), ModConfig.confSingularityAmount, Ingredient.fromStacks(ItemSingularity.getCatalystStack()), false, ModConfig.confSingularityRF);
-							}
-						}
+						CompressorRecipeManager.getInstance().addRecipe(new ItemStack(this, 1, meta), CraftingHelper.getIngredient(ore), ModConfig.confSingularityAmount, Ingredient.fromStacks(ItemSingularity.getCatalystStack()), false, ModConfig.confSingularityRF);
 					} else {
 						item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(parts[0], parts[1]));
 						if (item != null) {
