@@ -199,7 +199,6 @@ public class TileCraftingCore extends TileEntity implements ITickable, IGTEnergy
 		super.readFromNBT(tag);
 		this.inventory.deserializeNBT(tag);
 		this.progress = tag.getLong("Progress");
-		if (progress == 0L && tag.hasKey("Progress", 3)) this.progress = tag.getInteger("Progress");
 		this.energy.setEnergy(tag.getInteger("Energy"));
 	}
 
