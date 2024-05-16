@@ -166,6 +166,8 @@ public class TileCraftingCore extends TileEntity implements ITickable, IGTEnergy
 
 		if (!recipes.isEmpty()) {
 			for (CombinationRecipe recipe : recipes) {
+				if (recipe.getPedestalIngredients().isEmpty())
+					return recipe;
 				List<TilePedestal> pedestals = this.getPedestalsWithStuff(recipe, locations);
 				if (!pedestals.isEmpty())
 					return recipe;
