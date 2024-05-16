@@ -47,6 +47,13 @@ public class CombinationCraftingWrapper implements IRecipeWrapper {
 			ArrayList<String> tooltip = new ArrayList<>();
 			tooltip.add(Utils.localize("tooltip.ec.items_required"));
 			Object2IntLinkedOpenHashMap<String> tooltipCount = new Object2IntLinkedOpenHashMap<>();
+
+			ItemStack[] coreStacks = recipe.getInputIngredient().getMatchingStacks();
+			if(coreStacks.length != 0) {
+				String line = coreStacks[timer.getValue() % coreStacks.length].getDisplayName();
+				tooltipCount.put(line, tooltipCount.getInt(line) + 1);
+			}
+
 			for (Ingredient ing : recipe.getPedestalIngredients()) {
 				ItemStack[] stacks = ing.getMatchingStacks();
 				if(stacks.length == 0) continue;
