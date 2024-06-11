@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 @MethodsReturnNonnullByDefault
 public class CombinationCraftingWrapper implements IRecipeWrapper {
@@ -28,11 +29,11 @@ public class CombinationCraftingWrapper implements IRecipeWrapper {
 	public CombinationCraftingWrapper(IJeiHelpers helpers, CombinationRecipe recipe) {
 		this.helpers = helpers;
 		this.recipe = recipe;
-		int period = Math.max(1, recipe.getPedestalIngredients()
-				.stream()
+		int period = Stream.concat(Stream.of(recipe.getInputIngredient()), recipe.getPedestalIngredients().stream())
 				.map(Ingredient::getMatchingStacks)
-				.map(a -> a.length)
-				.reduce(1, (a, b) -> a * b));
+				.mapToInt(a -> a.length)
+				.map(a -> Math.max(1, a))
+				.reduce(1, (a, b) -> a * b);
 		timer = helpers.getGuiHelper()
 				.createTickTimer(period * 20, period, false);
 	}
