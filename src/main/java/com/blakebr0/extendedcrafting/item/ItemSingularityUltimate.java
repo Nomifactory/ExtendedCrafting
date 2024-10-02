@@ -80,6 +80,9 @@ public class ItemSingularityUltimate extends ItemBase implements IEnableable {
 	}
 
 	public static void addSingularityToRecipe(ItemStack stack) {
+		if (!ModConfig.confUltimateSingularityRecipe || !ModConfig.confSingularityEnabled)
+			return;
+
 		Item item = stack.getItem();
 		if (item instanceof ItemSingularity) {
 			if (blacklistDefaults.contains(stack.getMetadata())) {
