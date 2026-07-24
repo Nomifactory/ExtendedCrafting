@@ -28,11 +28,14 @@ public class CombinationCraftingWrapper implements IRecipeWrapper {
 	public CombinationCraftingWrapper(IJeiHelpers helpers, CombinationRecipe recipe) {
 		this.helpers = helpers;
 		this.recipe = recipe;
-		int period = recipe.getPedestalIngredients()
-				.stream()
-				.map(Ingredient::getMatchingStacks)
-				.map(a -> a.length)
-				.reduce(1, (a, b) -> a * b);
+
+		int period = Math.max(1, recipe.getInputIngredient().getMatchingStacks().length);
+		for (Ingredient ingredient : recipe.getPedestalIngredients()) {
+			int length = ingredient.getMatchingStacks().length;
+			if (length > 0) {
+				period *= length;
+			}
+		}
 		timer = helpers.getGuiHelper()
 				.createTickTimer(period * 20, period, false);
 	}
@@ -47,6 +50,13 @@ public class CombinationCraftingWrapper implements IRecipeWrapper {
 			ArrayList<String> tooltip = new ArrayList<>();
 			tooltip.add(Utils.localize("tooltip.ec.items_required"));
 			Object2IntLinkedOpenHashMap<String> tooltipCount = new Object2IntLinkedOpenHashMap<>();
+
+			ItemStack[] coreStacks = recipe.getInputIngredient().getMatchingStacks();
+			if(coreStacks.length != 0) {
+				String line = coreStacks[timer.getValue() % coreStacks.length].getDisplayName();
+				tooltipCount.put(line, tooltipCount.getInt(line) + 1);
+			}
+
 			for (Ingredient ing : recipe.getPedestalIngredients()) {
 				ItemStack[] stacks = ing.getMatchingStacks();
 				if(stacks.length == 0) continue;

@@ -39,7 +39,7 @@ public class TileCraftingCore extends TileEntity implements ITickable, IGTEnergy
 	private final ItemStackHandler inventory = new StackHandler();
 	private final EnergyStorageCustom energy = new EnergyStorageCustom(ModConfig.confCraftingCoreRFCapacity);
 
-	private int progress;
+	private long progress;
 	private int oldEnergy;
 	private int pedestalCount;
 
@@ -166,6 +166,8 @@ public class TileCraftingCore extends TileEntity implements ITickable, IGTEnergy
 
 		if (!recipes.isEmpty()) {
 			for (CombinationRecipe recipe : recipes) {
+				if (recipe.getPedestalIngredients().isEmpty())
+					return recipe;
 				List<TilePedestal> pedestals = this.getPedestalsWithStuff(recipe, locations);
 				if (!pedestals.isEmpty())
 					return recipe;
@@ -175,7 +177,7 @@ public class TileCraftingCore extends TileEntity implements ITickable, IGTEnergy
 		return null;
 	}
 
-	public int getProgress() {
+	public long getProgress() {
 		return this.progress;
 	}
 
@@ -196,7 +198,7 @@ public class TileCraftingCore extends TileEntity implements ITickable, IGTEnergy
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 		this.inventory.deserializeNBT(tag);
-		this.progress = tag.getInteger("Progress");
+		this.progress = tag.getLong("Progress");
 		this.energy.setEnergy(tag.getInteger("Energy"));
 	}
 
@@ -204,7 +206,7 @@ public class TileCraftingCore extends TileEntity implements ITickable, IGTEnergy
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag = super.writeToNBT(tag);
 		tag.merge(this.inventory.serializeNBT());
-		tag.setInteger("Progress", this.progress);
+		tag.setLong("Progress", this.progress);
 		tag.setInteger("Energy", this.energy.getEnergyStored());
 
 		return tag;

@@ -35,10 +35,10 @@ public class GuiCraftingCore extends GuiContainer {
 	}
 
 	private int getProgressBarScaled(int pixels) {
-		int i = this.tile.getProgress();
+		long i = this.tile.getProgress();
 		CombinationRecipe recipe = this.tile.getRecipe();
 		long j = recipe == null ? 0 : recipe.getCost();
-		return (int) (j != 0 && i != 0 ? (long) i * pixels / j : 0);
+		return (int) (j != 0 && i != 0 ? i * pixels / j : 0);
 	}
 
 	@Override
