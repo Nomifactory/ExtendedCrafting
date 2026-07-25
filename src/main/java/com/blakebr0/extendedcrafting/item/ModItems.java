@@ -1,18 +1,15 @@
 package com.blakebr0.extendedcrafting.item;
 
-import com.blakebr0.cucumber.guide.ItemGuide;
 import com.blakebr0.cucumber.registry.ModRegistry;
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
 import com.blakebr0.extendedcrafting.lib.ModGuide;
 
 public class ModItems {
     
-    public static final ItemGuide itemGuide = new ItemGuide("extendedcrafting", ExtendedCrafting.CREATIVE_TAB, ModGuide.GUIDE);
+    // 删除这行
+    // public static final ItemGuide itemGuide = new ItemGuide("extendedcrafting", ExtendedCrafting.CREATIVE_TAB, ModGuide.GUIDE);
 
     public static final ItemMaterial itemMaterial = new ItemMaterial();
-
-    // 删除这行
-    // public static final ItemRecipeMaker itemRecipeMaker = new ItemRecipeMaker();
 
     public static final ItemSingularity itemSingularity = new ItemSingularity();
     public static final ItemSingularityCustom itemSingularityCustom = new ItemSingularityCustom();
@@ -21,12 +18,10 @@ public class ModItems {
     public static void init() {
         final ModRegistry registry = ExtendedCrafting.REGISTRY;
         
-        registry.register(itemGuide, "guide");
+        // 删除这行
+        // registry.register(itemGuide, "guide");
 
         registry.register(itemMaterial, "material");
-
-        // 删除这行
-        // registry.register(itemRecipeMaker, "recipe_maker");
 
         registry.register(itemSingularity, "singularity");
         registry.register(itemSingularityCustom, "singularity_custom");
