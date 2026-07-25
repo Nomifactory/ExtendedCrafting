@@ -14,7 +14,8 @@ public class ModConfig {
 	public static Configuration config;
 	public static ModConfig instance;
 	
-	public static boolean confGuideEnabled;
+	// 删除这行
+	// public static boolean confGuideEnabled;
 	public static boolean confEnergyInWaila;
 
 	public static boolean confCraftingCoreEnabled;
@@ -70,7 +71,8 @@ public class ModConfig {
 		
 		category = "general";
 		config.setCategoryComment(category, "Settings for general things.");
-		confGuideEnabled = config.getBoolean("guide_enabled", category, true, "Should the In-Game Guide Book be enabled?");
+		// 删除这行
+		// confGuideEnabled = config.getBoolean("guide_enabled", category, true, "Should the In-Game Guide Book be enabled?");
 		confEnergyInWaila = config.getBoolean("energy_in_waila", category, true, "Should WAILA show the current energy of Extended Crafting machines?");
 		
 		category = "combination_crafting";
