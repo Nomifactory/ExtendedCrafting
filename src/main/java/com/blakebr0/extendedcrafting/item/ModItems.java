@@ -2,8 +2,6 @@ package com.blakebr0.extendedcrafting.item;
 
 import com.blakebr0.cucumber.registry.ModRegistry;
 import com.blakebr0.extendedcrafting.ExtendedCrafting;
-import com.blakebr0.extendedcrafting.lib.ModGuide;
-
 public class ModItems {
     
     // 删除这行
